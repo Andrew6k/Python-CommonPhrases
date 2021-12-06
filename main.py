@@ -34,7 +34,7 @@ def propozitii(text):
 
 def cuvinte(prop):
     wordsList=[]
-    words = re.split('[, ]',prop)
+    words = re.split('[ ]',prop)
     for word in words:
         if word:
                 wordsList.append(word)
