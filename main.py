@@ -2,7 +2,7 @@ import sys
 import re
 
 def citire():
-    #de la linia de comanda
+    #de la linia de comanda primim fisierele, apoi le citim
     file1 = sys.argv[1]
     file2 = sys.argv[2]
 
@@ -14,25 +14,27 @@ def citire():
     text1 = f.read()
     text2 = g.read()
 
-    print(text1)
-    print(text2)
+    #print(text1)
+    #print(text2)
 
     f.close()
     g.close()
 
 def propozitii(text):
-    split=re.split('[?.!]',text)
-    #print(split)
+    #impartim continului fisierelor in propozitii
+    phrases=re.split('[?.!]',text)
+    #print(phrases)
 
-    splitUpdate=[]
-    for prop in split:
+    phrasesUpdate=[]
+    for prop in phrases:
         propUpdate = prop.replace('\n','')
         if propUpdate:
-            splitUpdate.append(propUpdate)
-    print(splitUpdate)
-    return splitUpdate
+            phrasesUpdate.append(propUpdate)
+    #print(phrasesUpdate)
+    return phrasesUpdate
 
 def cuvinte(prop):
+    #impartim propozitiile in cuvinte
     wordsList=[]
     words = re.split('[ ]',prop)
     for word in words:
@@ -50,13 +52,14 @@ if __name__ == '__main__':
     totalWords1 = []
     for prop in p1:
         totalWords1.append(cuvinte(prop))
-    print(totalWords1)
+    #print(totalWords1)
 
     totalWords2 = []
     for prop in p2:
         totalWords2.append(cuvinte(prop))
-    print(totalWords2)
+    #print(totalWords2)
 
+    #cautam propozitiile comune
     commonPhrases = []
     for prop1 in totalWords1:
         for prop2 in totalWords2:
